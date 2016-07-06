@@ -16,14 +16,14 @@ var katescript = {
 
 require("json2.js");
 
-function jsonFormat()
+function jsonFormat(indent)
 {
+    if (typeof(indent)==='undefined') indent = 4;
+
     var documentText = document.text();
-    debug(documentText);
 
     var jsonParsed = JSON.parse(documentText);
-    var formatted = JSON.stringify(jsonParsed, null, 4);
-    debug(formatted);
+    var formatted = JSON.stringify(jsonParsed, null, parseInt(indent));
 
     if (documentText === formatted){
         formatted = JSON.stringify(jsonParsed);
